@@ -103,7 +103,7 @@ public class ImageListImpl implements ImageList {
         if (imageListItems == null) {
             if (coreList == null) {
                 log.warn("Could not locate the AEM WCM Core Components List SlingModel via this component's ResourceSuperType. Returning an empty list.");
-                imageListItems = Collections.EMPTY_LIST;
+                imageListItems = Collections.emptyList();
             } else {
                 // Calls the AEM WCM Core Components List component's `getListItems()` methods, transforms them into ImageListItem objects.
                 imageListItems = coreList.getListItems().stream()
@@ -179,7 +179,7 @@ public class ImageListImpl implements ImageList {
 
         @Override
         public String getURL() {
-            return wrappedListItem.getURL();
+            return wrappedListItem.getLink().getURL();
         }
 
         public boolean isEmpty() {
@@ -269,7 +269,6 @@ public class ImageListImpl implements ImageList {
      * Note that this resource wrapper will not effect the Image Component's style, which is dictated at the policy level.
      */
     protected static class SimpleImageComponentResource extends ResourceWrapper {
-        private static final String PN_FILE_REFERENCE = "fileReference";
         private static final String PN_ALT = "alt";
 
         private ValueMap properties = new ValueMapDecorator(new HashMap<>());
@@ -294,6 +293,7 @@ public class ImageListImpl implements ImageList {
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public <AdapterType> AdapterType adaptTo(Class<AdapterType> type) {
             if (type != ValueMap.class) {
                 return super.adaptTo(type);

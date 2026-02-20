@@ -16,15 +16,14 @@
 package com.adobe.aem.guides.wknd.it.tests;
 
 import com.adobe.cq.testing.client.CQClient;
-import com.gargoylesoftware.htmlunit.DefaultCssErrorHandler;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.WebClientOptions;
-import com.gargoylesoftware.htmlunit.html.DomNode;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import org.htmlunit.DefaultCssErrorHandler;
+import org.htmlunit.WebClient;
+import org.htmlunit.WebClientOptions;
+import org.htmlunit.html.DomNode;
+import org.htmlunit.html.HtmlPage;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.sling.testing.clients.ClientException;
 import org.apache.sling.testing.clients.SlingClientConfig;
-import org.slf4j.LoggerFactory;
 import org.w3c.dom.Node;
 
 import java.io.IOException;
@@ -43,8 +42,6 @@ import static org.junit.Assert.fail;
  */
 public class HtmlUnitClient extends CQClient {
 
-
-    private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(HtmlUnitClient.class);
 
     private final WebClient webClient = new WebClient();
 

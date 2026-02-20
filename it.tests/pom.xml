@@ -39,9 +39,9 @@
             <version>[4.13.1,)</version>
         </dependency>
         <dependency>
-            <groupId>net.sourceforge.htmlunit</groupId>
+            <groupId>org.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
-            <version>3.0.0</version>
+            <version>4.1.0</version>
         </dependency>
         <dependency>
             <groupId>com.adobe.cq</groupId>

@@ -48,7 +48,6 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -318,10 +317,12 @@ class ImageListImplTest {
         private Collection<ListItem> listItems = null;
 
         public MockList(String... pagePaths) {
-            this.listItems = Arrays.asList(pagePaths).stream()
-                    .map(pagePath -> ctx.resourceResolver().getResource(pagePath))
+            this.listItems = java.util.Arrays.asList(pagePaths).stream()
+                    .filter(pagePath -> pagePath != null)
+                    .map(pagePath -> pagePath != null ? ctx.resourceResolver().getResource(pagePath) : null)
+                    .filter(resource -> resource != null)
                     .map(resource -> new MockListItem(resource))
-                    .collect(Collectors.toList());
+                    .collect(java.util.stream.Collectors.toList());
         }
 
         public Collection<ListItem> getListItems() {

@@ -57,6 +57,7 @@ public class GraphQLIT {
     private static final Logger LOGGER = LoggerFactory.getLogger(GraphQLIT.class);
 
     @Rule
+    @SuppressWarnings("deprecation")
     public ExpectedException thrown = ExpectedException.none();
 
     @ClassRule
